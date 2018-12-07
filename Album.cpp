@@ -1,9 +1,6 @@
 #include "Album.h"
 #include <QDebug>
-Album::Album(QObject *parent) : QObject(parent)
-{
-
-}
+Album::Album(QObject *parent) : QObject(parent) { }
 
 void Album::init()
 {

@@ -39,9 +39,9 @@ void PictureWidget::initPictureInfo()
 void PictureWidget::showPicture(QString& picturePath)
 {
     bool isOK = _picture->load(picturePath);
-    *_picture = _picture->scaled(_widgetWidth,_widgetHeight,_scaledModel,Qt::SmoothTransformation);
     if(isOK)
     {
+         *_picture = _picture->scaled(_widgetWidth,_widgetHeight,_scaledModel,Qt::SmoothTransformation);
         _labelPhoto->setPixmap(*_picture);
     }
 }

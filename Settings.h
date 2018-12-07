@@ -2,13 +2,18 @@
 #define SETTINGS_H
 
 #include <QObject>
-#include "Singleton.h"
 
-class Settings : public Singleton<Settings>
+class Settings
 {
-public:
     Settings();
     ~Settings();
+public:
+    static Settings * getSingleton ()
+    {
+        static Settings inst ;
+        return & inst ;
+    }
+
     void readParameter();
     void saveParameter();
 

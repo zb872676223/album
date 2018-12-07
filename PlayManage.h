@@ -4,13 +4,18 @@
 #include <QObject>
 #include <QStringList>
 #include <QString>
-#include "Singleton.h"
 
-class PlayManage : public QObject, public Singleton<PlayManage>
+class PlayManage : public QObject
 {
     Q_OBJECT
-public:
     explicit PlayManage(QObject *parent = nullptr);
+public:
+    static PlayManage * getSingleton ()
+    {
+        static PlayManage inst ;
+        return & inst ;
+    }
+
     void init();
     void setPlayMode(int mode) {_playModel = mode;}
     QString getNextPicture();

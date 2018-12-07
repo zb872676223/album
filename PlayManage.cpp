@@ -1,9 +1,13 @@
 #include "PlayManage.h"
 #include <QApplication>
 #include <QDir>
-#include <QRandomGenerator>
-#include <QDebug>
+#include <QMessageBox>
 #include <QTimer>
+#include <QDebug>
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5,10,0))
+#include <QRandomGenerator>
+#endif
 
 PlayManage::PlayManage(QObject *parent) : QObject(parent)
 {
@@ -25,6 +29,15 @@ void PlayManage::init()
         {
             _pictureList.append(pictureDir + "/" + fileName);
         }
+        if(_pictureList.size() < 1)
+        {
+            QMessageBox::warning(nullptr, "Error", "Picture folder is empty !", QMessageBox::Ok);
+        }
+    }
+    else
+    {
+        QMessageBox::warning(nullptr, "Error", "Picture folder not exist ,  will create !", QMessageBox::Ok);
+        dir.mkpath(pictureDir);
     }
 }
 
@@ -59,7 +72,6 @@ QString PlayManage::playLoop()
         if(index == size)
             index = 0;
     }
-
     return ret;
 }
 
@@ -69,7 +81,11 @@ QString PlayManage::playInFulllyRandom()
     int size = _pictureList.size();
     if(size > 0)
     {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,10,0))
         int index = QRandomGenerator::global()->bounded(size);
+#else
+        int index = qrand() % size;
+#endif
         ret = _pictureList.at(index);
     }
 
