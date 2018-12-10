@@ -1,7 +1,7 @@
 # album
 This is a E-albums program that was developed by C++/Qt .
 
-I have an idle surface , I found it could be a E-albums . so I wrote this application .
+I have an idle surface , I found it could be a E-album . so I wrote this application .
 
 Support Qt4 And Qt5.
 
