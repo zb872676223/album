@@ -6,7 +6,7 @@ I have an idle surface , I found it could be a E-album . so I wrote this applica
 Support Qt4 And Qt5.
 
 Usage:
-1. put the photo into folder named "Picture".
+1. put the pictures into folder named "Picture".
 2. start the Application.
 
 ToDo:
